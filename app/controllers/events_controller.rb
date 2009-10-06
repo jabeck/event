@@ -9,7 +9,24 @@ class EventsController < ApplicationController
       format.xml  { render :xml => @events }
     end
   end
+  
+  # GET /events/category/name
+  # GET /events/category/name.xml
+  def category
+    name = params[:name].capitalize
+    if Category.exists? (:name => name)
+      @events = Category.find_by_name(name).events
+    else
+      flash[:notice] = "No such category."
+      @events = Event.all
+    end
 
+    respond_to do |format|
+      format.html {render :action => "index"}
+    end
+    
+  end
+  
   # GET /events/1
   # GET /events/1.xml
   def show

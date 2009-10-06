@@ -24,10 +24,6 @@
     <%= f.text_field :cost %>
   </p>
   <p>
-    <%= f.label :tags %><br />
-    <%= f.text_field :tags %>
-  </p>
-  <p>
     <%= f.label :category_id %><br />
     <%= f.select("category_id", @cats.collect {|p| [p.name,p.id] }) %>
   </p>
