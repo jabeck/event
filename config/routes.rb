@@ -31,7 +31,12 @@ ActionController::Routing::Routes.draw do |map|
   #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
   #     admin.resources :products
   #   end
-
+  map.resource :user_session
+  #map.root :controller => "user_sessions", :action => "new" # optional, this just sets the root route
+  
+  map.resource :account, :controller => "users"
+  map.resources :users
+  
   map.resources :events
   map.connect  'events/category/:name', :controller => 'events', :action => 'category'
   map.connect ':controller/:action/:id'
