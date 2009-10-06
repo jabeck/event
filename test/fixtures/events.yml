@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  occurs: 2009-10-05 19:49:02
+  location: MyString
+  title: MyString
+  description: MyString
+  cost: 1.5
+  tags: MyString
+  category_id: 1
+
+two:
+  occurs: 2009-10-05 19:49:02
+  location: MyString
+  title: MyString
+  description: MyString
+  cost: 1.5
+  tags: MyString
+  category_id: 1
