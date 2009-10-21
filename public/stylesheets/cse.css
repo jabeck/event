@@ -1,0 +1,100 @@
+body {
+	background-image: url("../images/ui-bg_layered-circles_20_23491d_13x13.png");
+}
+
+input[type=text] {
+	width: 300px;
+	padding: .4em;
+	font-size: 100%;
+}
+
+textarea {
+	width: 300px;
+	padding: .4em;
+	font-size: 110%;
+}
+
+select {
+	font-size: 100%;
+}
+
+input, textarea, select {
+	/*margin:0.5em 0; */
+	border: 1px solid #bbb;
+}
+
+input:focus, textarea:focus, select:focus {
+	border:1px solid #666;
+}
+
+input.money {
+	padding: .4 .4em .4 .4em;
+	width: 20px;
+}
+
+#banner {
+	font-size: 2em;
+	font-weight: bold;
+	width: 100%;
+}
+#wrapper {
+	margin-right: 10em;
+	margin-left: 10em;
+}
+
+#link-bar {
+	padding: 0 .5em .3em .5em;
+	background-image: url("../images/ui-bg_loop_75_f5ef84_21x21.png");
+}
+
+#summary-title {
+	font-weight: bold;
+	font-size: 100%;
+}
+
+#summary-description {
+	font-size: 90%;
+}
+.box-header {
+	padding: .2em .5em .2em .5em;
+}
+
+.bottom-bar {
+	background-image: url("../images/ui-bg_gloss-wave_100_bad7b7_500x100.png");
+	height: 5em;
+}
+
+.bottom-bar .summary {
+	padding: .4em 1em .4em 1em;
+	overflow: hidden;
+}
+
+.bottom-bar .event-time {
+	font-size: 150%;
+	padding-left: 1em;
+	height: 100%;
+}
+
+.jToday {
+	position:relative;
+	background-image: url("../images/ui-bg_gloss-wave_100_d6d6d6_500x100.png");
+	overflow:hidden;
+	text-align:center;
+}
+
+.jToday .year {
+	display:none;
+}
+
+.jToday .month {
+	font-weight:bold;
+	color:#eeeeee;
+	background-image: url("../images/ui-bg_gloss-wave_40_26621d_500x100.png");
+	font-size: 150%;
+}
+
+.jToday .day {
+	font-weight:bold;
+	color:#444444;
+	font-size:200%;
+}

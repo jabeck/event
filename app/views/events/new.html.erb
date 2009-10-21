@@ -1,35 +1,111 @@
-<h1>New event</h1>
+<script type="text/javascript">
+	function updateTitle() {
+		var text = $("#event_title").val();
+		if(text.length > 30)
+			text = text.substr(0,30) + "...";
+		$("#summary-title").attr("innerHTML", text);
+	}
+	
+	function updateDescription() {
+		var text = $("#event_description").val();
+		if(text.length > 80)
+			text = text.substr(0,80) + "...";
+		$("#summary-description").attr("innerHTML", text);
+	}
+		
+	function updateDatePicker() {
+		var date = new Date(), y = $("#event_occurs_1i").val(), m = $("#event_occurs_2i").val(), d = $("#event_occurs_3i").val();
+		date.setFullYear(y,m-1,d);
+		$("#datepicker").datepicker('setDate', date);
+		$(".jToday").jToday(date);
+	}
+</script>
 
-<% form_for(@event) do |f| %>
-  <%= f.error_messages %>
+<div id="createEventForm" class="ui-helper-reset ui-helper-clearfix ui-corner-all ui-widget-content box-content">
+	<h2 class="prepend-1">Create Event</h2>
 
-  <p>
-    <%= f.label :occurs %><br />
-    <%= f.datetime_select :occurs %>
-  </p>
-  <p>
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </p>
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :cost %><br />
-    <%= f.text_field :cost %>
-  </p>
-  <p>
-    <%= f.label :category_id %><br />
-    <%= f.select("category_id", @cats.collect {|p| [p.name,p.id] }) %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+	<% form_for(@event) do |f| %>
+	  <%= f.error_messages %>
+	  <div class="container">
 
-<%= link_to 'Back', events_path %>
+		  <div class="column span-8 prepend-2">
+				  <p>
+				    <%= f.label :location %><br />
+				    <%= f.text_field :location %>
+				  </p>
+			  
+				  <p>
+				    <%= f.label :title %><br />
+				    <%= f.text_field :title, :onchange => "updateTitle();" %>
+				  </p>
+			  
+				  <p>
+				    <%= f.label :description %><br />
+				    <%= f.text_area :description, :rows => 4, :onchange => "updateDescription();" %>
+				  </p>
+				  
+			  	<p>
+						  <span class="container">
+						  	<div class="column span-4">
+						  	
+									<%= f.label :cost %> (0 for free)<br />
+									$ <%= f.text_field :cost, :class => "money" %>
+									
+								</div>
+								
+								<div class="column span-4 last">
+								
+									<%= f.label :category_id %><br />
+									<%= f.select("category_id", @cats.collect {|p| [p.name,p.id] }) %>
+									
+								</div>
+							</span>
+					</p>
+		  </div>
+		  
+		  <div class="column span-9 prepend-1 append-2 last">
+	      <p>
+	      	<div id="datepicker"></div>
+	      	<script type="text/javascript"> 
+	  				$("#datepicker").datepicker();
+	  			</script>
+	  		</p>
+	  		
+			  <p onclick="updateDatePicker();">
+			  
+			    <%= f.label :occurs %><br />
+			    <%= f.datetime_select :occurs %>
+			    
+			  </p>
+		  </div>
+		</div>
+		
+		<div class="bottom-bar container push-2 span-18">
+				<div class="jToday column span-2 border"></div>
+				<script type="text/javascript">
+					$(".jToday").jToday();
+				</script>
+				
+				<div class="summary column span-10 border">
+					<div id="summary-title"></div>
+					<div id="summary-description"></div>
+				</div>
+				
+				<div class="event-time column span-2 border">
+				
+					7:00<br />
+					PM
+					
+				</div>
+				
+				<div class="confirm column span-2 last">
+				
+					Correct? <br />
+			  	<%= f.submit 'Create' %>
+			  	
+			  </div>
+		</div>
+	<% end %>
+
+	<%= link_to 'Back', events_path %>
+</div>

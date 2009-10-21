@@ -1,35 +1,48 @@
-<p>
-  <b>Occurs:</b>
-  <%=h @event.occurs %>
-</p>
+<div class="ui-helper-reset ui-helper-clearfix ui-corner-all ui-widget-content box-content">
+	  <div class="container">
 
-<p>
-  <b>Location:</b>
-  <%=h @event.location %>
-</p>
+		  <div class="column span-8 prepend-2">
+				  <p>
+				  	  <b>Location:</b>
+ 							<%=h @event.location %>
+					</p>
+					
+					<p>
+					  <b>Title:</b>
+					  <%=h @event.title %>
+					</p>				
+					
+					<p>
+					  <b>Description:</b>
+					  <%=h @event.description %>
+					</p>
+					
+			  	<p>
+						  <span class="container">
+						  	<div class="column span-4">				
+								  <b>Cost:</b> 
+								  $<%=h @event.cost %>
+								</div>
+								
+								<div class="column span-4 last">
+					  			<b>Category:</b> 
+					  			<%=h @event.category_id %>
+								</div>
+							</span>
+					</p>
+			</div>
 
-<p>
-  <b>Title:</b>
-  <%=h @event.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @event.description %>
-</p>
-
-<p>
-  <b>Cost:</b>
-  <%=h @event.cost %>
-</p>
-
-
-
-<p>
-  <b>Category:</b>
-  <%=h @event.category_id %>
-</p>
-
-
+			<div class="column span-9 prepend-1 append-2 last">											
+					<p>
+					  <b>Occurs:</b>
+					  <%=h @event.occurs %>
+					</p>
+<!--					<div class="jToday column span-2 border"></div>
+					<script type="text/javascript">
+							d = new Date();
+							$(".jToday").jToday();
+					</script> -->
+			</div>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+</div>
